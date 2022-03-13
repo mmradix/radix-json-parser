@@ -1,0 +1,63 @@
+{
+  "description": "Exemplo de ocorrência de liquidação",
+  "fundo": {
+    "identificacao": 90212003000181,
+    "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL"
+  },
+  "cessao": {
+    "originador": {
+      "codigo": "1474",
+      "nome": "BANCO DOS BRUXOS GRINGOTES"
+    },
+    "identificadorCessao": "ID001",
+    "recebiveis": [
+      {
+        "numeroControle": "ID001-01",
+        "coobrigacao": true,
+        "ocorrencia": 77,
+        "tipo": 41,
+        "documento": "ID001-1742",
+        "termoCessao": "ID001-41-17",
+        "sacado": {
+          "pessoa": {
+            "tipo": "PJ",
+            "identificacao": 91798742000160,
+            "nome": "MINISTRY OF MAGIC"
+          },
+          "endereco": {
+            "cep": 99988000,
+            "logradouro": "Rua Whitewall",
+            "numero": "333",
+            "complemento": "5 Andar",
+            "bairro": "London",
+            "municipio": "São Paulo",
+            "uf": "SP"
+          }
+        },
+        "cedente": {
+          "tipo": "PF",
+          "identificacao": 99743552812,
+          "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE"
+        },
+        "conta": {
+          "descricao": "Financeiro",
+          "banco": {
+            "nome": "Banco dos Bruxos Gringotes",
+            "numero": "171"
+          },
+          "agencia": "0001",
+          "conta": "00001-1"
+        },
+        "aquisicao": "2020-04-27",
+        "emissao": "2019-03-29",
+        "vencimento": "2020-11-20",
+        "liquidacao": "2020-11-20",
+        "valores": {
+          "face": 23605.79,
+          "aquisicao": 12211.15,
+          "liquidacao": 23605.79
+        }
+      }
+    ]
+  }
+}

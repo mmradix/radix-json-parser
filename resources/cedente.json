@@ -1,0 +1,60 @@
+{
+  "fundo": {
+    "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL",
+    "identificacao": 90212003000181
+  },
+  "cedentes": [
+    {
+      "tipo": "PJ",
+      "nome": "HOGWARTS SCHOOL OF WITCHCRAFT AND WIZARDRY",
+      "identificacao": 90649927000140,
+
+      "contatos": {
+        "principal": {
+          "nome": "HOGWARTS SCHOOL",
+          "telefones": {
+            "principal": {
+              "descricao": "Comercial",
+              "numero": "11-55555555"
+            }
+          },
+          "emails": {
+            "principal": "atendimento@hogwarts.edu"
+          },
+          "enderecos": {
+            "principal": {
+              "cep": 99999000,
+              "logradouro": "Av. Hogwarts",
+              "numero": "551",
+              "bairro": "Scotland",
+              "municipio": "São Paulo",
+              "uf": "SP"
+            }
+          }
+        }
+      },
+      "contrato": "2020-03-25",
+      "contasCorrentes": {
+        "principal": {
+          "banco": {
+            "nome": "Banco dos Bruxos Gringotes",
+            "numero": "171"
+          },
+          "agencia": "0001",
+          "conta": "00001-1"
+        }
+      },
+      "representantes": [
+        {
+          "email": "adumbledore@hogwarts.edu",
+          "poderes": [
+            "ASSINA_ISOLADAMENTE",
+            "ASSINA_POR_ENDOSSO",
+            "ASSINA_TERMO_CESSAO",
+            "EMITE_DUPLICATA"
+          ]
+        }
+      ]
+    }
+  ]
+}

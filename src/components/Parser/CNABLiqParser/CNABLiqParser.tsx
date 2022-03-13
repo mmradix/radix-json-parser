@@ -17,6 +17,11 @@ import { Map } from 'immutable';
 import { JSONTree } from 'react-json-tree';
 import { SheetJSParser } from '../Sheets/ReportFormatter';
 
+enum FileType {
+  CNAB = 'CNAB',
+  LIQ = 'LIQ',
+}
+
 const Input = styled('input')({
   display: 'none',
 });
@@ -37,10 +42,16 @@ const json = {
   immutable: Map({ key: 'value' }),
 };
 
-const CNABFileParserComponent = () => {
+interface Props {
+  fileType: FileType;
+}
+
+const FileParserComponent = ({ fileType }: Props) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
+
   const [loading, setLoading] = useState(false);
+
   const inputFileRef = useRef(null);
 
   const handleFileSelection = ({ target }: { target: any }) => {
@@ -85,7 +96,7 @@ const CNABFileParserComponent = () => {
             startIcon={<AttachFileRoundedIcon />}
             style={{ fontWeight: 'bold' }}
           >
-            Anexar Liquidação
+            Anexar {fileType === FileType.CNAB ? 'CNAB' : 'Liquidação'}
           </Button>
         </label>
         {selectedFile && (
@@ -104,6 +115,7 @@ const CNABFileParserComponent = () => {
           </StyledDivContainer>
         )}
       </StyledDivContainer>
+
       {loading && <LinearBuffer />}
       {fileName && !loading && <JSONTree data={json} />}
     </>
@@ -127,7 +139,12 @@ const CNABLiqParser = () => {
           </Typography>
           <RadixInformationBox text="Adicionar o documento criado na rede e no formato XLSX." />
         </Stack>
-        <CNABFileParserComponent />
+        <FileParserComponent fileType={FileType.LIQ} key="LIQ" />
+        <Stack spacing={1}>
+          <Typography variant="caption">Anexo arquivo de CNAB.</Typography>
+          <RadixInformationBox text="Adicionar o documento criado na rede e no formato XLSX." />
+          <FileParserComponent fileType={FileType.CNAB} key="CNAB" />
+        </Stack>
       </Stack>
     </Container>
   );

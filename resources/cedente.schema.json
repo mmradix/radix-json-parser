@@ -1,0 +1,248 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.brltrust.com.br/json/fidc/v1.2/cedente.schema.json",
+  "title": "Cadastro de Cedente",
+  "description": "Descreve o cadastro de um cedente",
+  "type": "object",
+  "examples": [
+    {
+      "$schema": "https://schemas.brltrust.com.br/json/fidc/v1.2/cedente.schema.json",
+      "fundo": {
+        "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL",
+        "identificacao": 90212003000181
+      },
+      "cedentes": [
+        {
+          "tipo": "PJ",
+          "nome": "HOGWARTS SCHOOL OF WITCHCRAFT AND WIZARDRY",
+          "identificacao": 90649927000140,
+          "tipoSociedade": "S.A.",
+          "inscricaoEstadual": "947948922637",
+          "inscricaoMunicipal": "ISENTO",
+          "porte": "11",
+          "faturamento": 10000000,
+          "atividadeEconomica": {
+            "ramo": "SERVIÇOS"
+          },
+          "conglomeradoEconomico": "MINISTRY OF MAGIC",
+          "numeroMinimoAssinaturas": 1,
+          "contatos": {
+            "principal": {
+              "nome": "HOGWARTS SCHOOL",
+              "telefones": {
+                "principal": {
+                  "descricao": "Comercial",
+                  "numero": "11-55555555"
+                }
+              },
+              "emails": {
+                "principal": "atendimento@hogwarts.edu"
+              },
+              "enderecos": {
+                "principal": {
+                  "cep": 99999000,
+                  "logradouro": "Av. Hogwarts",
+                  "numero": "551",
+                  "bairro": "Scotland",
+                  "municipio": "São Paulo",
+                  "uf": "SP"
+                }
+              }
+            },
+            "adicionais": [
+              {
+                "nome": "Departamento Financeiro",
+                "telefones": {
+                  "principal": {
+                    "descricao": "Comercial",
+                    "numero": "(11) 5555-5555",
+                    "ramal": "4747"
+                  }
+                },
+                "emails": {
+                  "principal": "financeiro@hogwarts.edu"
+                },
+                "enderecos": {
+                  "principal": {
+                    "cep": 99999000,
+                    "logradouro": "Av. Hogwarts",
+                    "numero": "551",
+                    "bairro": "Scotland",
+                    "municipio": "São Paulo",
+                    "uf": "SP"
+                  }
+                }
+              }
+            ]
+          },
+          "contrato": "2020-03-25",
+          "limite": 100000,
+          "autorizacao": true,
+          "classificacaoRisco": "AA",
+          "contasCorrentes": {
+            "principal": {
+              "descricao": "Financeiro",
+              "banco": {
+                "nome": "Banco dos Bruxos Gringotes",
+                "numero": "171"
+              },
+              "agencia": "0001",
+              "conta": "00001-1",
+              "administrada": true
+            },
+            "adicionais": [
+              {
+                "descricao": "Jurídico",
+                "banco": {
+                  "nome": "Banco dos Bruxos Gringotes",
+                  "numero": "171"
+                },
+                "agencia": "0001",
+                "conta": "00002-2",
+                "padrao": false
+              }
+            ]
+          },
+          "avalistas": [
+            {
+              "tipo": "PF",
+              "nome": "CORNELIUS OSWALD FUDGE",
+              "identificacao": 90887468004,
+              "email": "cfudge@ministryofmagic.org"
+            }
+          ],
+          "representantes": [
+            {
+              "tipo": "PF",
+              "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE",
+              "identificacao": 99743552812,
+              "email": "adumbledore@hogwarts.edu",
+              "poderes": [
+                "ASSINA_ISOLADAMENTE",
+                "ASSINA_POR_ENDOSSO",
+                "ASSINA_TERMO_CESSAO",
+                "EMITE_DUPLICATA"
+              ]
+            }
+          ],
+          "partesRelacionadas": [
+            {
+              "tipo": "PF",
+              "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE",
+              "identificacao": 99743552812
+            },
+            {
+              "tipo": "PF",
+              "nome": "MINERVA MCGONAGALL",
+              "identificacao": 97613904890
+            },
+            {
+              "tipo": "PF",
+              "nome": "SYBILL PATRICIA TRELAWNEY",
+              "identificacao": 95252941882
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "fundo": {
+      "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/fundo"
+    },
+    "cedentes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/cedente"
+      }
+    }
+  },
+  "required": ["fundo", "cedentes"],
+  "additionalProperties": false,
+  "definitions": {
+    "cedente": {
+      "type": "object",
+      "allOf": [
+        {
+          "oneOf": [
+            {
+              "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pessoa_fisica"
+            },
+            {
+              "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pessoa_juridica"
+            }
+          ]
+        },
+        {
+          "properties": {
+            "contatos": {
+              "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/contatos"
+            },
+            "contasCorrentes": {
+              "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/contas"
+            },
+            "contrato": {
+              "type": "string",
+              "format": "date"
+            },
+            "limite": {
+              "type": "number"
+            },
+            "classificacaoRisco": {
+              "description": "Classificação de risco",
+              "type": "string",
+              "enum": ["AA", "A", "B", "C", "D", "E", "F", "G", "H", "HH"]
+            },
+            "representantes": {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/representante"
+              }
+            },
+            "avalistas": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/avalista"
+              }
+            },
+            "partesRelacionadas": {
+              "type": "array",
+              "items": {
+                "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pessoa"
+              }
+            }
+          },
+          "required": [
+            "contatos",
+            "contasCorrentes",
+            "contrato",
+            "representantes"
+          ]
+        }
+      ],
+      "additionalProperties": true
+    },
+    "avalista": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pessoa"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            }
+          },
+          "required": ["email"]
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}
