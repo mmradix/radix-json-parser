@@ -1,0 +1,561 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://schemas.brltrust.com.br/json/fidc/v1.2/cessao.schema.json",
+  "title": "Cadastro de uma cessão em Fundos de Direitos Creditórios",
+  "description": "Descreve o cadastro de uma cessão de um fundo de Direitos Creditórios.",
+  "type": "object",
+  "examples": [
+    {
+      "$schema": "https://schemas.brltrust.com.br/json/fidc/v1.2/cessao.schema.json",
+      "description": "Exemplo de ocorrência de remessa",
+      "fundo": {
+        "identificacao": 90212003000181,
+        "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL"
+      },
+      "cessao": {
+        "originador": {
+          "codigo": "1474",
+          "nome": "BANCO DOS BRUXOS GRINGOTES"
+        },
+        "identificadorCessao": "ID001",
+        "recebiveis": [
+          {
+            "numeroControle": "ID001-01",
+            "coobrigacao": true,
+            "ocorrencia": 1,
+            "tipo": 41,
+            "documento": "ID001-1742",
+            "termoCessao": "ID001-41-17",
+            "sacado": {
+              "pessoa": {
+                "tipo": "PJ",
+                "identificacao": 91798742000160,
+                "nome": "MINISTRY OF MAGIC"
+              },
+              "endereco": {
+                "cep": 99988000,
+                "logradouro": "Rua Whitewall",
+                "numero": "333",
+                "complemento": "5 Andar",
+                "bairro": "London",
+                "municipio": "São Paulo",
+                "uf": "SP"
+              }
+            },
+            "cedente": {
+              "tipo": "PF",
+              "identificacao": 99743552812,
+              "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE"
+            },
+            "aquisicao": "2020-04-27",
+            "emissao": "2019-03-29",
+            "vencimento": "2020-11-20",
+            "valores": {
+              "face": 23605.79,
+              "aquisicao": 12211.15
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://schemas.brltrust.com.br/json/fidc/v1.2/cessao.schema.json",
+      "description": "Exemplo de ocorrência de remessa com dados adicionais na cessão",
+      "fundo": {
+        "identificacao": 90212003000181,
+        "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL"
+      },
+      "cessao": {
+        "originador": {
+          "codigo": "1474",
+          "nome": "BANCO DOS BRUXOS GRINGOTES"
+        },
+        "identificadorCessao": "ID001",
+        "recebiveis": [
+          {
+            "numeroControle": "ID001-01",
+            "coobrigacao": true,
+            "ocorrencia": 1,
+            "tipo": 41,
+            "documento": "ID001-1742",
+            "termoCessao": "ID001-41-17",
+            "sacado": {
+              "pessoa": {
+                "tipo": "PJ",
+                "identificacao": 91798742000160,
+                "nome": "MINISTRY OF MAGIC"
+              },
+              "endereco": {
+                "cep": 99988000,
+                "logradouro": "Rua Whitewall",
+                "numero": "333",
+                "complemento": "5 Andar",
+                "bairro": "London",
+                "municipio": "São Paulo",
+                "uf": "SP"
+              }
+            },
+            "cedente": {
+              "tipo": "PF",
+              "identificacao": 99743552812,
+              "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE"
+            },
+            "aquisicao": "2020-04-27",
+            "emissao": "2019-03-29",
+            "vencimento": "2020-11-20",
+            "valores": {
+              "face": 23605.79,
+              "aquisicao": 12211.15
+            }
+          }
+        ],
+        "dados": {
+          "rating": "A1",
+          "renda": 10500.5,
+          "idade": 30
+        }
+      }
+    },
+    {
+      "$schema": "https://schemas.brltrust.com.br/json/fidc/v1.2/cessao.schema.json",
+      "description": "Exemplo de ocorrência de remessa com dados adicionais na recebivel",
+      "fundo": {
+        "identificacao": 90212003000181,
+        "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL"
+      },
+      "cessao": {
+        "originador": {
+          "codigo": "1474",
+          "nome": "BANCO DOS BRUXOS GRINGOTES"
+        },
+        "identificadorCessao": "ID001",
+        "recebiveis": [
+          {
+            "numeroControle": "ID001-01",
+            "coobrigacao": true,
+            "ocorrencia": 1,
+            "tipo": 41,
+            "documento": "ID001-1742",
+            "termoCessao": "ID001-41-17",
+            "sacado": {
+              "pessoa": {
+                "tipo": "PJ",
+                "identificacao": 91798742000160,
+                "nome": "MINISTRY OF MAGIC"
+              },
+              "endereco": {
+                "cep": 99988000,
+                "logradouro": "Rua Whitewall",
+                "numero": "333",
+                "complemento": "5 Andar",
+                "bairro": "London",
+                "municipio": "São Paulo",
+                "uf": "SP"
+              }
+            },
+            "cedente": {
+              "tipo": "PF",
+              "identificacao": 99743552812,
+              "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE"
+            },
+            "aquisicao": "2020-04-27",
+            "emissao": "2019-03-29",
+            "vencimento": "2020-11-20",
+            "valores": {
+              "face": 23605.79,
+              "aquisicao": 12211.15
+            },
+            "dados": {
+              "chassi": "9BW ZZZ377 VT 004251",
+              "ano": 1997,
+              "contrato": "AL1234"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$schema": "https://schemas.brltrust.com.br/json/fidc/v1.2/cessao.schema.json",
+      "description": "Exemplo de ocorrência de liquidação",
+      "fundo": {
+        "identificacao": 90212003000181,
+        "nome": "ORDER OF THE PHOENIX FIDC ABERTO MULTISSETORIAL"
+      },
+      "cessao": {
+        "originador": {
+          "codigo": "1474",
+          "nome": "BANCO DOS BRUXOS GRINGOTES"
+        },
+        "identificadorCessao": "ID001",
+        "recebiveis": [
+          {
+            "numeroControle": "ID001-01",
+            "coobrigacao": true,
+            "ocorrencia": 77,
+            "tipo": 41,
+            "documento": "ID001-1742",
+            "termoCessao": "ID001-41-17",
+            "sacado": {
+              "pessoa": {
+                "tipo": "PJ",
+                "identificacao": 91798742000160,
+                "nome": "MINISTRY OF MAGIC"
+              },
+              "endereco": {
+                "cep": 99988000,
+                "logradouro": "Rua Whitewall",
+                "numero": "333",
+                "complemento": "5 Andar",
+                "bairro": "London",
+                "municipio": "São Paulo",
+                "uf": "SP"
+              }
+            },
+            "cedente": {
+              "tipo": "PF",
+              "identificacao": 99743552812,
+              "nome": "ALBUS PERCIVAL WULFRIC BRIAN DUMBLEDORE"
+            },
+            "conta": {
+              "descricao": "Financeiro",
+              "banco": {
+                "nome": "Banco dos Bruxos Gringotes",
+                "numero": "171"
+              },
+              "agencia": "0001",
+              "conta": "00001-1"
+            },
+            "aquisicao": "2020-04-27",
+            "emissao": "2019-03-29",
+            "vencimento": "2020-11-20",
+            "liquidacao": "2020-11-20",
+            "valores": {
+              "face": 23605.79,
+              "aquisicao": 12211.15,
+              "liquidacao": 23605.79
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "fundo": {
+      "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/fundo"
+    },
+    "cessao": { "$ref": "#/definitions/cessao" },
+    "pagamentos": {
+      "description": "Preencher com uma das contas corrente do cedente, previamente cadastrada, caso o pagamento seja realizado em conta diferente da padrão.",
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/pagamento" }
+    }
+  },
+  "required": ["fundo", "cessao"],
+  "additionalProperties": false,
+  "definitions": {
+    "originador": {
+      "type": "object",
+      "properties": {
+        "codigo": {
+          "description": "H06 - Código de identificação fornecido pela BRL",
+          "type": "string",
+          "maxLength": 20
+        },
+        "nome": {
+          "description": "H07 - Nome da consultoria",
+          "type": "string",
+          "maxLength": 30
+        }
+      },
+      "required": ["codigo", "nome"],
+      "additionalProperties": false
+    },
+    "cessao": {
+      "type": "object",
+      "properties": {
+        "identificadorCessao": {
+          "description": "Identificador único da cessão na Consultoria independente dos códigos de ocorrência.",
+          "type": "string"
+        },
+        "originador": { "$ref": "#/definitions/originador" },
+        "recebiveis": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/recebivel" }
+        },
+        "retencao": {
+          "description": "H15 - Valor da retencao para cessão",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 99999999.99
+        },
+        "pagamentos": {
+          "description": "Preencher com uma das contas corrente do cedente, previamente cadastrada, caso o pagamento seja realizado em conta diferente da padrão.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/pagamento" }
+        },
+        "dados": {
+          "description": "Ponto de extensão para dados adicionais necessários a operação ligados a cessão.",
+          "$ref": "#/definitions/dados"
+        }
+      },
+      "required": ["identificadorCessao", "originador", "recebiveis"],
+      "additionalProperties": false
+    },
+    "recebivel": {
+      "type": "object",
+      "properties": {
+        "numeroControle": {
+          "description": "D10 - Identificador único do título na Consultoria",
+          "type": "string",
+          "maxLength": 25
+        },
+        "coobrigacao": {
+          "description": "D03 - Verdadeiro (true) com coobrigação, falso (false) caso contrário",
+          "type": "boolean"
+        },
+        "operacao": { "$ref": "#/definitions/operacao" },
+        "banco": {
+          "description": "D11 - Obrigatório para o tipo de recebivel cheque (51)",
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/banco"
+        },
+        "conta": {
+          "description": "Informação do banco e conta de pagamento, utilizado somente em caso de liquidação",
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/conta"
+        },
+        "ocorrencia": {
+          "description": "D23 - Identificação Ocorrência: 01 – Remessa; 04 – Abatimento (mediante justificativa); 06 - Alteração de vencimento (para efeito de conciliação. Não altera o vencimento original); 11 – Aquisição de contratos futuros; 12 – Aquisição de baixa de contratos futuros; 14 - Pagamento Parcial; 20 - Prorrogação da data de vencimento do título; 71 – Baixa por recompra, baixa mediante entrada de novo titulo – com liquidação  para a consultoria (obrigatória contrapartida 81 no mesmo arquivo).; 72 - Recompra parcial sem adiantamento.; 73 - Recompra parcial com adiantamento.; 74 – Baixa por Recompra, baixa mediante entrada de novo titulo, com liquidação para o cedente (obrigatório contrapartida 84 no mesmo arquivo); 75 – Baixa por Depósito Cedente; 76 – Baixa por Depósito Consultoria; 77 – Baixa por Depósito Sacado; 80 – Remessa (com liquidação para a consultoria).; 81 – Entrada por recompra troca de títulos, com objetivo de recompra, com liquidação para a consultoria (obrigatório contrapartida 71 no mesmo arquivo).; 84 – Entrada por Recompra troca de títulos, com liquidação para o cedente (obrigatório contrapartida 74 no mesmo arquivo) se tiver recompra dentro da operação enviar as entradas com o código 84; 85 - Baixa por Recompra;  86 - Baixa por Recompra;  87 – Reativação; 95 - Baixa por Venda; 99 - Recebível reprovado por consultoria ou gestor (o recebível não será adquirido, não sendo enviado para o sistema de custódia)",
+          "type": "number",
+          "enum": [
+            1, 4, 6, 11, 12, 14, 20, 71, 72, 73, 74, 75, 76, 77, 80, 81, 84, 85,
+            86, 87, 95, 99
+          ]
+        },
+        "tipo": {
+          "description": "D29 - Tipo do recebivel: 01 - Duplicata; 02 - Nota Promissória; 06 - Nota Promissória Física; 14 – Duplicata de Serviço Física; 15 - Cota de consórcio ativa; 16: Cota de consórcio cancelada; 18: Cota de consórcio ativa p/ cancelar; 41 - CCB (Pré-fixada); 51 - Cheque; 53 - Precatório Estadual; 54 - Precatório Federal; 55 - Precatório Municipal; 60 – Contrato; 61 – Contrato Físico; 62 – Confissão de Divida; 65 – Fatura de Cartão Credito; 67 - Bloqueio agenda pagamento Cartao; 73 - Home Equity; 74 - Financiamento de imóvel; 75 - Auto Equity; 76 - Financiamento de automóvel; 77 - Financiamento de moto; 78 - Consignado Privado; 79 - Antecipação de salário; 80 - Consignado - Creditas Store; 81 - Previdência; 97 - Ação Judicial",
+          "type": "number",
+          "enum": [
+            1, 2, 6, 14, 15, 16, 18, 41, 51, 53, 54, 55, 60, 61, 62, 65, 67, 73,
+            74, 75, 76, 77, 78, 79, 80, 81, 97
+          ]
+        },
+        "cobranca": { "$ref": "#/definitions/cobranca" },
+        "documento": {
+          "description": "D24 - Número do documento (seu número)",
+          "type": "string",
+          "maxLength": 10
+        },
+        "termoCessao": {
+          "description": "D31 - Número do Termo de Cessão",
+          "type": "string",
+          "maxLength": 19
+        },
+        "sacado": { "$ref": "#/definitions/sacado" },
+        "cedente": {
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pessoa"
+        },
+        "emissao": {
+          "description": "D31 - Data de emissão do título",
+          "type": "string",
+          "format": "date"
+        },
+        "aquisicao": {
+          "description": "H10 - Data de aquisição da cessão, deve ser a data da gravação do arquivo",
+          "type": "string",
+          "format": "date"
+        },
+        "liquidacao": {
+          "description": "D18 - Data de liquidação do título. Informar somente para ocorrências de baixa.",
+          "type": "string",
+          "format": "date"
+        },
+        "vencimento": {
+          "description": "D26 - Data de vencimento do título",
+          "type": "string",
+          "format": "date"
+        },
+        "lastro": { "$ref": "#/definitions/lastro" },
+        "valores": { "$ref": "#/definitions/valor" },
+        "dados": {
+          "description": "Ponto de extensão para dados adicionais necessários a operação ligados ao recebível.",
+          "$ref": "#/definitions/dados"
+        }
+      },
+      "required": [
+        "numeroControle",
+        "coobrigacao",
+        "ocorrencia",
+        "tipo",
+        "documento",
+        "sacado",
+        "cedente",
+        "emissao",
+        "aquisicao",
+        "vencimento",
+        "valores"
+      ],
+      "additionalProperties": false
+    },
+    "operacao": {
+      "type": "object",
+      "properties": {
+        "caracteristicaEspecial": {
+          "description": "D04 - Preencher de acordo com o Anexo 8 do layout SRC3040 do Bacen",
+          "type": "string",
+          "maxLength": 2
+        },
+        "modalidade": {
+          "description": "D05 - Preencher de acordo com o Anexo 3 do layout SRC3040 do Bacen - preencher o domínio e o sub- domínio",
+          "type": "string",
+          "maxLength": 4
+        },
+        "natureza": {
+          "description": "D06 - Preencher de acordo com o Anexo 2 do layout SRC3040 do Bacen",
+          "type": "string",
+          "maxLength": 2
+        },
+        "origemRecursos": {
+          "description": "D07 - Preencher de acordo com o Anexo 4 do layout SRC3040 do Bacen - preencher o domínio e o sub- domínio",
+          "type": "string",
+          "maxLength": 4
+        },
+        "classificacaoRisco": {
+          "description": "D08 - Preencher de acordo com o Anexo 17 do layout SRC3040 do Bacen",
+          "type": "string",
+          "enum": ["AA", "A", "B", "C", "D", "E", "F", "G", "H", "HH"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "cobranca": {
+      "type": "object",
+      "properties": {
+        "banco": {
+          "description": "D27 - Banco encarregado pela cobrança",
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/banco"
+        },
+        "agencia": {
+          "description": "D28 - Código da Agência Depositária",
+          "type": "string",
+          "maxLength": 5
+        },
+        "emitirPapeletaCobranca": {
+          "description": "D16 - Condição para Emissão da Papeleta de Cobrança",
+          "type": "boolean"
+        }
+      },
+      "required": ["banco", "agencia", "emitirPapeletaCobranca"],
+      "additionalProperties": false
+    },
+    "sacado": {
+      "type": "object",
+      "properties": {
+        "pessoa": {
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pessoa"
+        },
+        "endereco": {
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/endereco"
+        }
+      },
+      "required": ["pessoa", "endereco"],
+      "additionalProperties": false
+    },
+    "valor": {
+      "type": "object",
+      "properties": {
+        "face": {
+          "description": "D26 - Valor de face do título",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "aquisicao": {
+          "description": "D37 - Valor Presente da Parcela (liquido da parcela) – Valor de Aquisição",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "abatimento": {
+          "description": "D38 - Valor do Abatimento a ser concedido na instrução",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "cedente": {
+          "description": "Valor a ser pago para o cedente em caso de comissões e taxas usados nos tipos de recebiveis (15, 16, 53, 54, 55)",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "comissoes": {
+          "description": "Valor a ser pago pela comissão para os tipos de recebiveis (15, 16, 53, 54, 55)",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "liquidacao": {
+          "description": "D15 - Valor pago na liquidação/baixa do título. Informar somente para ocorrencias de baixa.",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "tributos": {
+          "description": "Valor a ser pago pelos tributos para o tipo de recebivel precatório (53, 54, 55)",
+          "type": "number",
+          "multipleOf": 0.01
+        },
+        "despesas": {
+          "description": "Valor a ser pago eventual despesas de cartório e outros para o tipo de recebivel precatório (53, 54, 55)",
+          "type": "number",
+          "multipleOf": 0.01
+        }
+      },
+      "required": ["face", "aquisicao"],
+      "additionalProperties": false
+    },
+    "lastro": {
+      "type": "object",
+      "properties": {
+        "numero": {
+          "description": "D43 - Numero da Nota fiscal para tipo de recebível Duplicata (01)",
+          "type": "string",
+          "maxLength": 9
+        },
+        "serie": {
+          "description": "D44 - Numero da Série da Nota Fiscal para tipo de recebível Duplicata (01)",
+          "type": "string",
+          "maxLength": 3
+        },
+        "chave": {
+          "description": "D47 - Chave da Nota Fiscal Eletrônica para tipo de recebível Duplicata (01); Número do precatório para tipo de recebivel Precatório (53, 54, 55); CMC7 para tipo de recebível cheque (51); ",
+          "type": "string",
+          "maxLength": 44
+        }
+      },
+      "required": ["chave"],
+      "additionalProperties": false
+    },
+    "pagamento": {
+      "type": "object",
+      "properties": {
+        "tipo": {
+          "type": "string",
+          "enum": [
+            "CEDENTE",
+            "HONORARIO",
+            "INTERMEDIARIO",
+            "ORIGINADOR",
+            "TRIBUTO"
+          ]
+        },
+        "pagamento": {
+          "$ref": "https://schemas.brltrust.com.br/json/cadun/v1.2/pessoa.schema.json#/definitions/pagamento"
+        }
+      },
+      "required": ["tipo", "pagamento"],
+      "additionalProperties": false
+    },
+    "dados": {
+      "description": "Estrutura livre para inclusão de dados adicionais necessários a operação.",
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
