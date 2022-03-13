@@ -23,12 +23,27 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a message
-        run: echo Hello, building and deploying!
+      - name: Generate Static React Files
+        uses: actions/setup-node@v2
+        with: node-version: '16'
+        run: npm ci
+        run: npm run build
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Init new repo in dist folder and commit generated files
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+        cd build
+        git init
+        git add -A
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "deploy"
+
+      - name: Force push to destination branch
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          # Token for the repo
+          # Can be passed in using ${secrets.GITHUB_TOKEN}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          force: true
+          directory: ./build
