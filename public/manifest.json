@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Radix Conversor",
+  "name": "Radix - Conversor",
   "icons": [
     {
       "src": "favicon.ico",
