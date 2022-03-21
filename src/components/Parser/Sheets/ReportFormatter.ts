@@ -1,6 +1,5 @@
 import { read, utils } from 'xlsx';
 import map from 'lodash/map';
-import get from 'lodash/get';
 import { fundos } from '../CNABLiqParser/FundoSelect';
 
 const excelColumnHeader = [
@@ -50,7 +49,7 @@ export function SheetJSParser(file: any, values: any, callback: any) {
     /**
      * Grab first row and use it as headers
      */
-    const headers = data.shift();
+    data.shift();
 
     const formattedData = map(data, (row: any) => {
       const formattedRow: any = {};
