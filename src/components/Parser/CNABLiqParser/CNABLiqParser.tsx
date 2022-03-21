@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Formik, useFormikContext } from 'formik';
 import styled from 'styled-components';
 import {
   IconButton,
@@ -12,10 +13,12 @@ import AttachFileRoundedIcon from '@mui/icons-material/AttachFileRounded';
 import CancelPresentation from '@mui/icons-material/CancelPresentation';
 
 import LinearBuffer from './FileProgress';
-// If you're using Immutable.js: `npm i --save immutable`
-import { Map } from 'immutable';
+
 import { JSONTree } from 'react-json-tree';
 import { SheetJSParser } from '../Sheets/ReportFormatter';
+import { TipoPrecatorioSelect } from './TipoPrecatorioSelect';
+import { OcorrenciasSelect } from './OcorrenciasSelect';
+import { FundoSelect } from './FundoSelect';
 
 enum FileType {
   CNAB = 'CNAB',
@@ -32,23 +35,23 @@ const StyledDivContainer = styled('div')({
   alignItems: 'center',
 });
 
-// Inside a React component:
-const json = {
-  array: [1, 2, 3],
-  bool: true,
-  object: {
-    foo: 'bar',
-  },
-  immutable: Map({ key: 'value' }),
-};
-
 interface Props {
   fileType: FileType;
 }
 
+function download(content: any, fileName: any, contentType: any) {
+  const a = document.createElement('a');
+  const file = new Blob([content], { type: contentType });
+  a.href = URL.createObjectURL(file);
+  a.download = fileName;
+  a.click();
+}
+
 const FileParserComponent = ({ fileType }: Props) => {
+  const { values } = useFormikContext<any>();
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileName, setFileName] = useState(null);
+  const [jsonData, setJsonData] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
@@ -65,12 +68,16 @@ const FileParserComponent = ({ fileType }: Props) => {
     setLoading(false);
   };
 
+  const handleFileCallback = (jsonfile: any) => {
+    setJsonData(jsonfile);
+  };
+
   useEffect(() => {
     if (selectedFile) {
       setLoading(true);
-      SheetJSParser(selectedFile);
+      SheetJSParser(selectedFile, values, handleFileCallback);
     }
-  }, [selectedFile]);
+  }, [selectedFile, values]);
 
   useEffect(() => {
     if (loading) {
@@ -117,7 +124,27 @@ const FileParserComponent = ({ fileType }: Props) => {
       </StyledDivContainer>
 
       {loading && <LinearBuffer />}
-      {fileName && !loading && <JSONTree data={json} />}
+      {fileName && !loading && jsonData && (
+        <Stack spacing={2}>
+          <JSONTree data={jsonData} />
+          <Button
+            variant="outlined"
+            component="span"
+            startIcon={<AttachFileRoundedIcon />}
+            style={{ fontWeight: 'bold' }}
+            onClick={() => {
+              console.log(jsonData);
+              download(
+                JSON.stringify(jsonData),
+                'cessao.json',
+                'application/json'
+              );
+            }}
+          >
+            Baixar JSON
+          </Button>
+        </Stack>
+      )}
     </>
   );
 };
@@ -130,20 +157,38 @@ const CNABLiqParser = () => {
           Converter novo arquivo
         </Typography>
         <Typography variant="subtitle1" fontWeight="600">
-          Vamos começar adicionando o arquivo de liquidação e CNAB para
-          conversão.
+          Vamos começar selecionando o tipo da ocorrência e o tipo do precatório
+          que deseja, em seguida adicione o arquivo de CNAB para conversão.
         </Typography>
-        <Stack spacing={1}>
-          <Typography variant="caption">
-            Anexo arquivo de Liquidação.
-          </Typography>
-          <RadixInformationBox text="Adicionar o documento criado na rede e no formato XLSX." />
-        </Stack>
-        <FileParserComponent fileType={FileType.LIQ} key="LIQ" />
-        <Stack spacing={1}>
-          <Typography variant="caption">Anexo arquivo de CNAB.</Typography>
-          <RadixInformationBox text="Adicionar o documento criado na rede e no formato XLSX." />
-          <FileParserComponent fileType={FileType.CNAB} key="CNAB" />
+        <Stack spacing={2}>
+          <Formik
+            initialValues={{
+              tipoRecebivel: 54,
+              ocorrencia: 1,
+              fundo: '37436930000100',
+            }}
+            onSubmit={(values, { setSubmitting }) => {
+              setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+            }}
+          >
+            {() => (
+              <>
+                <TipoPrecatorioSelect />
+                <OcorrenciasSelect />
+                <FundoSelect />
+                <Stack spacing={1}>
+                  <Typography variant="caption">
+                    Anexo arquivo de CNAB.
+                  </Typography>
+                  <RadixInformationBox text="Adicionar o documento criado na rede e no formato XLSX." />
+                </Stack>
+                <FileParserComponent fileType={FileType.CNAB} key="CNAB" />
+              </>
+            )}
+          </Formik>
         </Stack>
       </Stack>
     </Container>
